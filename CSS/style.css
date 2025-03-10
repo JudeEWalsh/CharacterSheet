@@ -1,0 +1,22 @@
+body{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    background-color:rgb(248, 224, 146);
+    border: double 10px black;
+    margin: 20px;
+    padding: 20px;
+}
+
+.characterSheet{
+    color: aqua;
+}
+
+.hide{
+    display: none;
+}

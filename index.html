@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Character Creator</title>
+</head>
+<body>
+    <form action="">
+        <h1>Character Creator</h1>
+        <label for="name-input">Name</label>
+        <input type="text" id="name-input" name="">
+        <br>
+        <label for="age-input">Age</label>
+        <input type="number" id="age-input" name="">
+        <br>
+        <label for="sex">Sex</label>
+        <select id="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+        <label for="class">Class</label>
+        <select onchange="selectedClass()" name="" id="classSelector">
+            <option value="fighter">Fighter</option>
+            <option value="mage">Mage</option>
+            <option value="thief">Thief</option>
+        </select>
+        <br>
+        <div id="chooseSpell" class="hide">
+            <br>
+            <label for="">Starting Spell</label>
+            <br>
+            <input type="radio" name="spells" id=""> <label for="">Sleep</label>
+            <br>
+            <input type="radio" name="spells" id=""> <label for="">Charm Person</label>
+            <br>
+            <input type="radio" name="spells" id=""> <label for="">Magic Missile</label>
+            <br>
+        </div>
+        <input type="submit" onclick="handleSubmit(event)" value="Submit">
+    </form>
+
+    <div id="sheet" class="characterSheet hide">
+        <h2>Name: </h2>
+    </div>
+
+    <script src="Code/app.js"></script>
+</body>
+</html>
