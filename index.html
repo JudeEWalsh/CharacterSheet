@@ -4,47 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <title>Character Creator</title>
 </head>
 <body>
     <form action="">
-        <h1>Character Creator</h1>
-        <label for="name-input">Name</label>
-        <input type="text" id="name-input" name="">
-        <br>
-        <label for="age-input">Age</label>
-        <input type="number" id="age-input" name="">
-        <br>
-        <label for="sex">Sex</label>
-        <select id="sex">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        <br>
-        <label for="class">Class</label>
-        <select onchange="selectedClass()" name="" id="classSelector">
-            <option value="fighter">Fighter</option>
-            <option value="mage">Mage</option>
-            <option value="thief">Thief</option>
-        </select>
-        <br>
+        <div>
+            <h1>Character Creator</h1>
+            <label for="name-input">Name</label>
+            <input type="text" id="name-input" name="">
+            <br>
+            <label for="age-input">Age</label>
+            <input type="number" id="age-input" name="">
+            <br>
+            <label for="sex-input">Sex</label>
+            <select onchange="selectedSex()" name="" id="sex-input">
+                <option value="chooseOption">Choose Option</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <div>
+                <img src="./Images/Male.png" alt="" id="sex-male" class="hide right">
+                <img src="./Images/Female.png" alt="" id="sex-female" class="hide right">
+            </div>
+            <label for="class">Class</label>
+            <select onchange="selectedClass()" name="" id="classSelector">
+                <option value="chooseOption">Choose Option</option>
+                <option value="fighter">Fighter</option>
+                <option value="mage">Mage</option>
+                <option value="thief">Thief</option>
+            </select>
+            <br>
+        </div>
+        <div id="chooseWeapon" class="right hide">
+            <br>
+            <label for="">Starting Weapon</label>
+            <br>
+            <input type="radio" name="weapon" id="weapon"> <label for="">Broadsword</label>
+            <br>
+            <input type="radio" name="weapon" id="weapon"> <label for="">Claymore</label>
+            <br>
+            <input type="radio" name="weapon" id="weapon"> <label for="">Spear</label>
+            <br>
+        </div>
         <div id="chooseSpell" class="hide">
             <br>
             <label for="">Starting Spell</label>
             <br>
-            <input type="radio" name="spells" id=""> <label for="">Sleep</label>
+            <input type="radio" name="spells" id="spell"> <label for="">Fire</label>
             <br>
-            <input type="radio" name="spells" id=""> <label for="">Charm Person</label>
+            <input type="radio" name="spells" id="spell"> <label for="">Ice</label>
             <br>
-            <input type="radio" name="spells" id=""> <label for="">Magic Missile</label>
+            <input type="radio" name="spells" id="spell"> <label for="">Poison</label>
             <br>
         </div>
-        <input type="submit" onclick="handleSubmit(event)" value="Submit">
+        <div id="chooseWeapon2" class="hide">
+            <br>
+            <label for="">Starting Weapon</label>
+            <br>
+            <input type="radio" name="weapon2" id="weapon2"> <label for="">Dagger</label>
+            <br>
+            <input type="radio" name="weapon2" id="weapon2"> <label for="">Sword</label>
+            <br>
+            <input type="radio" name="weapon2" id="weapon2"> <label for="">Bow</label>
+            <br>
+        </div>
+        <br>
+        <div>
+            <label for="">Statistics</label>
+            <br>
+            <label for="">Strength</label>
+            <input type="range" value="0" min="1" max="10" oninput="this.nextElementSibling.value = this.value" id="strength-input">
+            <output>1</output>
+            <label for="">Defence</label>
+            <input type="range" value="0" min="1" max="10" oninput="this.nextElementSibling.value = this.value" id="defence-input">
+            <output>1</output>
+            <label for="">Magic</label>
+            <input type="range" value="0" min="1" max="10" oninput="this.nextElementSibling.value = this.value" id="magic-input">
+            <output>1</output>
+            <label for="">Dexterity</label>
+            <input type="range" value="0" min="1" max="10" oninput="this.nextElementSibling.value = this.value" id="dexterity-input">
+            <output>1</output>
+            <label for="">Speed</label>
+            <input type="range" value="0" min="1" max="10" oninput="this.nextElementSibling.value = this.value" id="speed-input">
+            <output>1</output>
+            <label for="">Knowledge</label>
+            <input type="range" value="0" min="1" max="10" oninput="this.nextElementSibling.value = this.value" id="knowledge-input">
+            <output>1</output>
+            <!-- https://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value -->
+        </div>
+        <br>
+        <button type="button" onclick="handleSubmit(event)" id="submit">Create Character</button>
     </form>
 
-    <div id="sheet" class="characterSheet hide">
-        <h2>Name: </h2>
-    </div>
+    <form id="sheet" class="hide">
+        <div class="characterOutput">
+            <h1>Character Details</h1>
+            <p>Name:<span id="name-output"></span></p>
+            <p>Age: <span id="age-output"></span></p>
+            <p>Sex: <span id="sex-output"></span></p>
+            <p>Class: <span id="class-output"></span></p>
+            <br>
+            <p>Strength: <span id="strength-output"></span></p>
+            <p>Defence: <span id="defence-output"></span></p>
+            <p>Magic: <span id="magic-output"></span></p>
+            <p>Dexterity: <span id="dexterity-output"></span></p>
+            <p>Speed: <span id="speed-output"></span></p>
+            <p>Knowledge: <span id="knowledge-output"></span></p>
+        </div>
+    </form>
 
     <script src="Code/app.js"></script>
 </body>
